@@ -6,7 +6,7 @@ import com.parkingsystem.vehicle.VehicleType;
 
 import java.util.Scanner;
 
-public class ParkingRunnerImpl implements Runner {
+public class ParkingSystemDemo implements Runner {
     private static final String CLOSE = "CLOSE";
     private static final String PARK = "PARK";
     private static final String UNPARK = "UNPARK";

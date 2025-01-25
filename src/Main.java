@@ -1,5 +1,5 @@
 import com.Runner.Runner;
-import com.parkingsystem.ParkingRunnerImpl;
+import com.parkingsystem.ParkingSystemDemo;
 
 import java.util.List;
 import java.util.Scanner;
@@ -25,7 +25,7 @@ public class Main {
         var x = scanner.nextInt();
         switch (x) {
             case 0 -> {
-                Runner runner = new ParkingRunnerImpl();
+                Runner runner = new ParkingSystemDemo();
                 runner.run();
             }
             default -> throw new IllegalStateException("Unexpected value: " + x);
