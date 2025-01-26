@@ -1,4 +1,5 @@
 import com.Runner.Runner;
+import com.logger.LoggerDemo;
 import com.parkingsystem.ParkingSystemDemo;
 import com.stackoverflow.StackOverflowDemo;
 
@@ -10,7 +11,8 @@ import java.util.Scanner;
 public class Main {
     private static final List<String> systems = List.of(
             "Parking System",
-            "StackOverflow"
+            "StackOverflow",
+            "Logger"
     );
 
     public static void main(String[] args) throws IllegalStateException{
@@ -32,6 +34,10 @@ public class Main {
             }
             case 1 -> {
                 Runner runner = new StackOverflowDemo();
+                runner.run();
+            }
+            case 2 -> {
+                Runner runner = new LoggerDemo();
                 runner.run();
             }
             default -> throw new IllegalStateException("Unexpected value: " + x);
