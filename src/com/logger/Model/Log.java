@@ -20,13 +20,12 @@ final public class Log {
     }
 
     public String debugString() {
-        String builder = "Message: " + message +
+        return "Message: " + message +
                 "\n" +
                 "Level: " + level.toString() +
                 "\n" +
                 "Timestamp: " + timestamp +
                 "\n" +
                 "Source: " + source;
-        return builder;
     }
 }
