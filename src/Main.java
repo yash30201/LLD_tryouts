@@ -1,5 +1,6 @@
 import com.Runner.Runner;
 import com.parkingsystem.ParkingSystemDemo;
+import com.stackoverflow.StackOverflowDemo;
 
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +9,8 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     private static final List<String> systems = List.of(
-            "Parking System"
+            "Parking System",
+            "StackOverflow"
     );
 
     public static void main(String[] args) throws IllegalStateException{
@@ -26,6 +28,10 @@ public class Main {
         switch (x) {
             case 0 -> {
                 Runner runner = new ParkingSystemDemo();
+                runner.run();
+            }
+            case 1 -> {
+                Runner runner = new StackOverflowDemo();
                 runner.run();
             }
             default -> throw new IllegalStateException("Unexpected value: " + x);
