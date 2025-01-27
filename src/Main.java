@@ -2,6 +2,7 @@ import com.Runner.Runner;
 import com.logger.LoggerDemo;
 import com.parkingsystem.ParkingSystemDemo;
 import com.pubsublite.PubSubLiteDemo;
+import com.rentalsystem.RentalSystemDemo;
 import com.stackoverflow.StackOverflowDemo;
 
 import java.util.List;
@@ -14,7 +15,8 @@ public class Main {
             "Parking System",
             "StackOverflow",
             "Logger",
-            "PubSub Lite"
+            "PubSub Lite",
+            "Rental System"
     );
 
     public static void main(String[] args) throws IllegalStateException{
@@ -44,6 +46,10 @@ public class Main {
             }
             case 3 -> {
                 Runner runner = new PubSubLiteDemo();
+                runner.run();
+            }
+            case 4 -> {
+                Runner runner = new RentalSystemDemo();
                 runner.run();
             }
             default -> throw new IllegalStateException("Unexpected value: " + x);
