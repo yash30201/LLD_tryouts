@@ -9,7 +9,7 @@ public class Vehicle {
     private final VehicleType type;
     private final int pricePerDay;
     private final String id;
-    private List<RentalBooking> bookings;
+    private final List<RentalBooking> bookings;
 
     public Vehicle(String numberPlate, VehicleType type, int pricePerDay) {
         this.numberPlate = numberPlate;

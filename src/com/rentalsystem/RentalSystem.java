@@ -80,13 +80,13 @@ public class RentalSystem {
             return vehicle;
         });
         if (result.isEmpty()) {
-            if (paymentResult.get(0)) {
+            if (paymentResult.getFirst()) {
                 throw new Exception("Vehicle got booked! Please try again");
             } else {
                 throw new Exception("Payment failed! Please book again");
             }
         }
-        return result.get(0);
+        return result.getFirst();
     }
 
     public String modifyBooking(Customer customer, String oldBookingId, Range newDateRange) throws Exception {

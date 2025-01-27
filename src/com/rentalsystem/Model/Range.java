@@ -1,8 +1,6 @@
 package com.rentalsystem.Model;
 
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 
 public class Range {
     private final LocalDate start;
@@ -24,7 +22,7 @@ public class Range {
     /**
      * Checks is the `other` range is intersecting with the current one. Same day ending / starting
      * is considered intersecting
-     * @param other
+     * @param other Checks if `other` is intersecting.
      * @return Returns `true` on intersecting
      */
     public boolean isIntersecting(Range other) {

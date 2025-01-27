@@ -3,11 +3,8 @@ package com.rentalsystem;
 import com.Runner.Runner;
 import com.rentalsystem.Model.*;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 public class RentalSystemDemo implements Runner {
 
@@ -34,8 +31,8 @@ public class RentalSystemDemo implements Runner {
 
         List<VehicleType> allList = List.of(VehicleType.values());
 
-        Query q1 = Query.of(allList, 1000, LocalDate.of(2024, 11, 01), LocalDate.of(2024, 11, 10));
-        Query q2 = Query.of(allList, 700, LocalDate.of(2024, 11, 01), LocalDate.of(2024, 11, 10));
+        Query q1 = Query.of(allList, 1000, LocalDate.of(2024, 11, 1), LocalDate.of(2024, 11, 10));
+        Query q2 = Query.of(allList, 700, LocalDate.of(2024, 11, 1), LocalDate.of(2024, 11, 10));
 
         System.out.println("Running query 1");
         List<QueryResult> r1 = system1.search(q1);
@@ -50,7 +47,9 @@ public class RentalSystemDemo implements Runner {
 
         String b1 = "";
         try {
-            b1 = system1.creatingBooking(c1, r1.get(0).getVehicleId(), q1.getDateRange());
+            b1 = system1.creatingBooking(c1, r1.getFirst().getVehicleId(), q1.getDateRange());
+            System.out.println("Booked!");
+            System.out.println("    Booking id : " + b1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -60,25 +59,29 @@ public class RentalSystemDemo implements Runner {
         RentalSystem system2 = RentalSystem.getInstance();
         System.out.println("Trying to book the same vehicle again for the same duration");
         try {
-            system2.creatingBooking(c1, r1.get(0).getVehicleId(), q1.getDateRange());
+            system2.creatingBooking(c1, r1.getFirst().getVehicleId(), q1.getDateRange());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         System.out.println("Modifying previous booking");
-        Range range1 = new Range(LocalDate.of(2024, 11, 01), LocalDate.of(2024, 11, 5));
+        Range range1 = new Range(LocalDate.of(2024, 11, 1), LocalDate.of(2024, 11, 5));
+        String b2;
         try {
-            system2.modifyBooking(c1, b1, range1);
+            b2 = system2.modifyBooking(c1, b1, range1);
+            System.out.println("Modified booking!");
+            System.out.println("    New booking id : " + b2);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
 
         System.out.println("Booking the same vehicle after modifying");
-        String b2 = "";
-        Range range2 = new Range(LocalDate.of(2024, 11, 06), LocalDate.of(2024, 11, 10));
+        Range range2 = new Range(LocalDate.of(2024, 11, 6), LocalDate.of(2024, 11, 10));
         try {
-            b2 = system2.creatingBooking(c1, r1.get(0).getVehicleId(), range2);
+            String b3 = system2.creatingBooking(c1, r1.getFirst().getVehicleId(), range2);
+            System.out.println("Booked!");
+            System.out.println("    Booking id : " + b3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -92,6 +95,9 @@ public class RentalSystemDemo implements Runner {
         system1.addVehicle(v4);
         system1.addVehicle(v5);
         system1.addVehicle(v6);
+
+        System.out.println("Deleting booking b1 : " + b1);
+
 
         Query q3 = Query.of(allList, 1500, LocalDate.of(2024, 11, 01), LocalDate.of(2024, 11, 10));
         Query q4 = Query.of(allList, 1000, LocalDate.of(2024, 12, 01), LocalDate.of(2024, 12, 10));
