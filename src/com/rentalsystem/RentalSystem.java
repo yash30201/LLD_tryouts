@@ -1,6 +1,7 @@
 package com.rentalsystem;
 
 import com.rentalsystem.Model.*;
+import com.sun.source.tree.Tree;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
@@ -21,6 +22,7 @@ public class RentalSystem {
         this.vehicles = new ArrayList<>();
         this.idToBooking = new ConcurrentHashMap<>();
         paymentProcessor = new CreditCardPaymentProcessor();
+        TreeSet<Integer> x = new TreeSet<>();
     }
 
     public static RentalSystem getInstance() {
